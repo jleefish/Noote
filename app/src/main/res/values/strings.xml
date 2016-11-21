@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Noote</string>
+    <string name="no_notes">No Notes Yet</string>
+    <string name="menu_insert">Add Note</string>
+    <string name="menu_delete">Delete Note</string>
+    <string name="title">Title: </string>
+    <string name="body">Body</string>
+    <string name="category">Category</string>
+    <string name="confirm">Save</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="find">FIND</string>
+    <string-array name="category_arrays">
+        <item>Work</item>
+        <item>Home</item>
+        <item>Travel</item>
+        <item>Diary</item>
+        <item>Food</item>
+        <item>Book</item>
+        <item>Movie</item>
+        <item>etc</item>
+    </string-array>
+</resources>
