@@ -1,10 +1,17 @@
 package com.advmovile.noote;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NooteEdit extends Activity {
+
+public class NooteEdit extends Activity implements LocationListener {
 
     private EditText mTitleText;
     private EditText mBodyText;
@@ -21,6 +29,10 @@ public class NooteEdit extends Activity {
     // ===============
     private TextView dt;
     private EditText mCategory;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private double latitude, longitude;
+    private boolean gps_enabled, network_enabled;
 
     public void setActivityBackgroundColor(int color) {
         View view = this.getWindow().getDecorView();
@@ -31,6 +43,14 @@ public class NooteEdit extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noote_edit);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         setActivityBackgroundColor(Color.rgb(224,224,224));
 
@@ -112,5 +132,26 @@ public class NooteEdit extends Activity {
         } else {
             mDbHelper.updateNote(mRowId, title, body, dt, category);
         }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+        Log.d("Latitude","status");
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+        Log.d("Latitude","Enable");
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+        Log.d("Latitude","Disable");
     }
 }

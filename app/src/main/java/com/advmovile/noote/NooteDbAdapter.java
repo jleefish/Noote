@@ -41,9 +41,8 @@ public class NooteDbAdapter {
     public static final String KEY_ROWID = "_id";
 
     public static final String KEY_DATE = "date";
-//    public static final String KEY_TIME = "time";
     public static final String KEY_CATEGORY = "category";
-    public static final String KEY_LOCATION = "location";
+//    public static final String KEY_LOCATION = "location";
 
     private static final String TAG = "NotesDbAdapter";
     private DatabaseHelper mDbHelper;
@@ -57,7 +56,7 @@ public class NooteDbAdapter {
                     + "title text not null, "
                     + "category text not null, "
                     + "body text not null, "
-//                    + "location text not null, "
+                    + "location text not null, "
                     + "date text );";
 //                    + "time text, "
 //                    + "location text );";
@@ -128,7 +127,7 @@ public class NooteDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String title, String body, String date, String category) {
+    public long createNote(String title, String body, String date, String category ) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
