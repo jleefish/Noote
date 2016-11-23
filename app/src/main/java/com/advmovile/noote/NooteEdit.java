@@ -15,12 +15,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class NooteEdit extends Activity implements LocationListener {
+public class NooteEdit extends Activity {
 
     private EditText mTitleText;
     private EditText mBodyText;
@@ -32,7 +31,8 @@ public class NooteEdit extends Activity implements LocationListener {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private double latitude, longitude;
-    private boolean gps_enabled, network_enabled;
+    private TextView lat, lon;
+//    private boolean gps_enabled, network_enabled;
 
     public void setActivityBackgroundColor(int color) {
         View view = this.getWindow().getDecorView();
@@ -44,15 +44,7 @@ public class NooteEdit extends Activity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noote_edit);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-        setActivityBackgroundColor(Color.rgb(224,224,224));
+        setActivityBackgroundColor(Color.rgb(224, 224, 224));
 
         mDbHelper = new NooteDbAdapter(this);
         mDbHelper.open();
@@ -61,6 +53,8 @@ public class NooteEdit extends Activity implements LocationListener {
         mBodyText = (EditText) findViewById(R.id.body);
         dt = (TextView) findViewById(R.id.date);
         mCategory = (EditText) findViewById(R.id.category);
+        lat = (TextView) findViewById(R.id.latitude);
+        lon = (TextView) findViewById(R.id.longitude);
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
 
@@ -77,10 +71,17 @@ public class NooteEdit extends Activity implements LocationListener {
 
             public void onClick(View view) {
                 System.out.println(mTitleText.getText());
-                if (mTitleText.getText().toString().equalsIgnoreCase("")){
-                    Toast.makeText(getBaseContext(),"TITLE missing",Toast.LENGTH_SHORT).show();
+                if (mTitleText.getText().toString().equalsIgnoreCase("")) {
+                    Toast.makeText(getBaseContext(), "TITLE missing", Toast.LENGTH_SHORT).show();
                 } else {
+
+
+
                     setResult(RESULT_OK);
+//                    if (ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                        return;
+//                    }
+//                    locationManager.removeUpdates(locationListener);
                     finish();
                 }
             }
@@ -96,6 +97,8 @@ public class NooteEdit extends Activity implements LocationListener {
             mBodyText.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_BODY)));
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
+            lat.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LATITUDE))));
+            lon.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LONGITUDE))));
             System.out.println("date"+note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE));
         }
     }
@@ -123,35 +126,42 @@ public class NooteEdit extends Activity implements LocationListener {
         String body = mBodyText.getText().toString();
         String dt = NooteHelper.formatDT();
         String category = mCategory.getText().toString();
+//        double latitude = this.latitude;
+//        double longitude = this.longitude;
+        String latitude = String.valueOf(0.0);
+        String longitude = String.valueOf(0.0);
 
         if (mRowId == null) {
-            long id = mDbHelper.createNote(title, body, dt, category);
+            long id = mDbHelper.createNote(title, body, dt, category, latitude, longitude);
             if (id > 0) {
                 mRowId = id;
             }
         } else {
-            mDbHelper.updateNote(mRowId, title, body, dt, category);
+            mDbHelper.updateNote(mRowId, title, body, dt, category, latitude, longitude);
         }
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-        Log.d("Latitude","status");
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-        Log.d("Latitude","Enable");
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-        Log.d("Latitude","Disable");
-    }
+//    @Override
+//    public void onLocationChanged(Location location) {
+//        latitude = location.getLatitude();
+//        longitude = location.getLongitude();
+//
+//        lat.setText(String.valueOf(latitude));
+//        lon.setText(String.valueOf(longitude));
+//    }
+//
+//    @Override
+//    public void onStatusChanged(String s, int i, Bundle bundle) {
+//        Log.d("Latitude","status");
+//    }
+//
+//    @Override
+//    public void onProviderEnabled(String s) {
+//        Log.d("Latitude","Enable");
+//    }
+//
+//    @Override
+//    public void onProviderDisabled(String s) {
+//        Log.d("Latitude","Disable");
+//    }
 }
