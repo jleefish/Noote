@@ -8,6 +8,7 @@
     <string name="body">Body</string>
     <string name="category">Category</string>
     <string name="confirm">Save</string>
+    <string name="map">Map</string>
     <string name="edit_note">Edit Note</string>
     <string name="find">FIND</string>
     <string-array name="category_arrays">

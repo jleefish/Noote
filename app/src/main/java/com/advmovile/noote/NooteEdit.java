@@ -28,9 +28,9 @@ public class NooteEdit extends Activity {
     // ===============
     private TextView dt;
     private EditText mCategory;
-    private LocationManager locationManager;
-    private LocationListener locationListener;
-    private double latitude, longitude;
+    private LocationManager locationManager = null;
+    private LocationListener locationListener = null;
+    private String latitude, longitude;
     private TextView lat, lon;
 //    private boolean gps_enabled, network_enabled;
 
@@ -43,6 +43,13 @@ public class NooteEdit extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noote_edit);
+
+        // ---- location service
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new MyLocationListener();
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
+
+        // ---- location service
 
         setActivityBackgroundColor(Color.rgb(224, 224, 224));
 
@@ -74,14 +81,11 @@ public class NooteEdit extends Activity {
                 if (mTitleText.getText().toString().equalsIgnoreCase("")) {
                     Toast.makeText(getBaseContext(), "TITLE missing", Toast.LENGTH_SHORT).show();
                 } else {
-
-
-
+                    if (ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    locationManager.removeUpdates(locationListener);
                     setResult(RESULT_OK);
-//                    if (ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                        return;
-//                    }
-//                    locationManager.removeUpdates(locationListener);
                     finish();
                 }
             }
@@ -126,10 +130,8 @@ public class NooteEdit extends Activity {
         String body = mBodyText.getText().toString();
         String dt = NooteHelper.formatDT();
         String category = mCategory.getText().toString();
-//        double latitude = this.latitude;
-//        double longitude = this.longitude;
-        String latitude = String.valueOf(0.0);
-        String longitude = String.valueOf(0.0);
+//        String latitude = String.valueOf(0.0);
+//        String longitude = String.valueOf(0.0);
 
         if (mRowId == null) {
             long id = mDbHelper.createNote(title, body, dt, category, latitude, longitude);
@@ -141,27 +143,30 @@ public class NooteEdit extends Activity {
         }
     }
 
-//    @Override
-//    public void onLocationChanged(Location location) {
-//        latitude = location.getLatitude();
-//        longitude = location.getLongitude();
-//
-//        lat.setText(String.valueOf(latitude));
-//        lon.setText(String.valueOf(longitude));
-//    }
-//
-//    @Override
-//    public void onStatusChanged(String s, int i, Bundle bundle) {
-//        Log.d("Latitude","status");
-//    }
-//
-//    @Override
-//    public void onProviderEnabled(String s) {
-//        Log.d("Latitude","Enable");
-//    }
-//
-//    @Override
-//    public void onProviderDisabled(String s) {
-//        Log.d("Latitude","Disable");
-//    }
+    public class MyLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location location) {
+
+            latitude = String.valueOf(location.getLatitude());
+            longitude = String.valueOf(location.getLongitude());
+
+        }
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+            Log.d("Location","status");
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+            Log.d("Location","Enabled");
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+            Log.d("Location","Disabled");
+        }
+    }
+
 }
