@@ -57,8 +57,8 @@ public class NooteDbAdapter {
                     + "title text not null, "
                     + "category text not null, "
                     + "body text not null, "
-                    + "latitude text , "
-                    + "longitude text , "
+                    + "latitude text, "
+                    + "longitude text, "
                     + "date text );";
 
 

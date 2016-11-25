@@ -11,14 +11,7 @@
     <string name="map">Map</string>
     <string name="edit_note">Edit Note</string>
     <string name="find">FIND</string>
-    <string-array name="category_arrays">
-        <item>Work</item>
-        <item>Home</item>
-        <item>Travel</item>
-        <item>Diary</item>
-        <item>Food</item>
-        <item>Book</item>
-        <item>Movie</item>
-        <item>etc</item>
-    </string-array>
+    <string name="Latitude">Latitude:</string>
+    <string name="Longitude">Longitude:</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
