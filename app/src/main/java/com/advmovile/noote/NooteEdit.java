@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -32,7 +36,12 @@ import java.util.Date;
 import static android.content.ContentValues.TAG;
 
 
-public class NooteEdit extends Activity implements View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
+public class NooteEdit extends Activity implements
+        View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener, LocationListener
+        ,ActivityCompat.OnRequestPermissionsResultCallback {
+
+    static final int TAKE_AVATAR_CAMERA_REQUEST = 1;
+    static final int TAKE_AVATAR_GALLERY_REQUEST =2;
 
     private EditText mTitleText;
     private EditText mBodyText;
@@ -41,8 +50,6 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
     // ===============
     private TextView dt;
     private EditText mCategory;
-    private LocationManager locationManager = null;
-    private LocationListener locationListener = null;
     private TextView textViewLat, textViewLng;
     private String stringLat;
     private String stringLng;
@@ -52,6 +59,13 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
     protected Location mCurrentLocation;
     protected String mLastUpdateTime;
     protected Boolean mRequestingLocationUpdates;
+
+    // ===== add photo
+    private ImageButton newPhoto;
+//    private ImageView photo;
+    private byte[] photoBytes;
+
+
 
 
     public void setActivityBackgroundColor(int color) {
@@ -80,13 +94,19 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
         textViewLat = (TextView) findViewById(R.id.latitude);
         textViewLng = (TextView) findViewById(R.id.longitude);
 
+        newPhoto = (ImageButton) findViewById(R.id.photoButton);
+//        photo = (ImageView) findViewById(R.id.photo);
+
         Button confirmButton = (Button) findViewById(R.id.confirm);
         confirmButton.setOnClickListener(this);
 
         Button mapButton = (Button) findViewById(R.id.map);
         mapButton.setOnClickListener(this);
 
+        // ===============
         mRowId = savedInstanceState != null ? savedInstanceState.getLong(NooteDbAdapter.KEY_ROWID) : null;
+        // ===============
+
 
         if (mRowId == null) {
             Bundle extras = getIntent().getExtras();
@@ -94,25 +114,114 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
         }
 
         populateFields();
-
-//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        locationListener = new MyLocationListener();
-//
-//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, locationListener);
-
         buildGoogleApiClient();
 
+//        newPhoto.setOnClickListener(new ChooseCameraListener());
+        newPhoto.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK);
+                pickPhoto.setType("image/*");
+                startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
+
+                return true;
+            }
+        });
+
     }
+
+//    @Override
+//    public boolean onLongClick(View view) {
+//        Intent pickPhoto = new Intent(Intent.ACTION_PICK);
+//        pickPhoto.setType("image/*");
+//        startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
+//
+//        return true;
+//    }
+
+//    public class ChooseCameraListener implements View.OnClickListener {
+//
+//        @Override
+//        public void onClick(View v) {
+//
+//            Intent pictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//            startActivityForResult(Intent.createChooser(
+//                    pictureIntent, "Take your photo"), TAKE_AVATAR_CAMERA_REQUEST);
+//        }
+//    }
+
+
+//    private class ChooseGalleryListener implements View.OnLongClickListener {
+//
+//        @Override
+//        public boolean onLongClick(View v)
+//        {
+//            Intent pickPhoto = new Intent(Intent.ACTION_PICK);
+//            pickPhoto.setType("image/*");
+//            startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
+//
+//            return true;
+//        }
+//    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case TAKE_AVATAR_CAMERA_REQUEST:
+
+//                if (resultCode == Activity.RESULT_CANCELED)
+//                {
+//// Avatar camera mode was canceled.
+//                }
+//                else if (resultCode == Activity.RESULT_OK)
+//                {
+//// Avatar camera executed ok
+//                    Bitmap cameraPic =(Bitmap) data.getExtras().get("data");
+//                    if (cameraPic != null)
+//                    {
+//                        try
+//                        {
+//// Get URI from bitmap
+//                            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//                            cameraPic.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+//                            String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), cameraPic, "Title", null);
+//
+//// Convert to a byte array we can access in saveState()
+//
+//// set ImageView to cameraPic
+//                            imgPhoto.setImageBitmap(cameraPic);
+//                        }
+//                        catch (Exception e)
+//                        {
+//// error saving the image
+//                        }
+//                    }
+//                }
+            case TAKE_AVATAR_GALLERY_REQUEST:
+                if (resultCode == Activity.RESULT_CANCELED) {
+                    // Avatar gallery request mode was canceled.
+                } else if (resultCode == Activity.RESULT_OK) {
+                    //Get image picked
+                    Uri photoUri = data.getData();
+
+
+                    if (photoUri != null) {
+                        try {
+                            newPhoto.setImageURI(photoUri);
+                            Bitmap galleryPic = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                            photoBytes = NooteHelper.getImageBytes(galleryPic);
+                        } catch (Exception e) {
+
+                        }
+                    }
+                }
+        }
+
+
+    }
+
+
+
 
     private synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -232,6 +341,7 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
             mBodyText.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_BODY)));
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
+            newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
             textViewLat.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LATITUDE))));
             textViewLng.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LONGITUDE))));
 //            System.out.println("date"+note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE));
@@ -241,7 +351,9 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong(NooteDbAdapter.KEY_ROWID, mRowId);
+        if (mRowId != null) {
+            outState.putLong(NooteDbAdapter.KEY_ROWID, mRowId);
+        }
     }
 
     @Override
@@ -276,31 +388,14 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
         String lng = stringLng;
 
         if (mRowId == null) {
-            long id = mDbHelper.createNote(title, body, dt, category, lat, lng);
+            long id = mDbHelper.createNote(title, body, dt, category, lat, lng, photoBytes);
             if (id > 0) {
                 mRowId = id;
             }
         } else {
-            mDbHelper.updateNote(mRowId, title, body, dt, category, lat, lng);
+            mDbHelper.updateNote(mRowId, title, body, dt, category, lat, lng, photoBytes);
         }
     }
-
-//    public void displayMap(View view) {
-//
-//        if (latitude == null && longitude == null) {
-//            Toast.makeText(getApplicationContext(), "save note first", Toast.LENGTH_LONG).show();
-//        } else {
-//            double textViewLat = Double.valueOf(latitude);
-//            double textViewLng = Double.valueOf(longitude);
-//
-////        LatLng latLng = new LatLng(textViewLat, textViewLng);
-//            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-//            intent.putExtra("latitude", textViewLat);
-//            intent.putExtra("longitude", textViewLng);
-//            intent.putExtra("title", mTitleText.getText().toString());
-//            startActivity(intent);
-//        }
-//    }
 
     @Override
     public void onClick(View v) {
@@ -321,9 +416,7 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
                 } else {
                     double lat = Double.valueOf(textViewLat.getText().toString());
                     double lng = Double.valueOf(textViewLng.getText().toString());
-//                    double textViewLng = Double.valueOf(longitude);
 
-//        LatLng latLng = new LatLng(textViewLat, textViewLng);
                     Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                     intent.putExtra("latitude", lat);
                     intent.putExtra("longitude", lng);
@@ -335,32 +428,5 @@ public class NooteEdit extends Activity implements View.OnClickListener, Connect
                 break;
         }
     }
-
-//    private class MyLocationListener implements LocationListener {
-//
-//        @Override
-//        public void onLocationChanged(Location location) {
-//            stringLat = String.valueOf(location.getLatitude());
-//            stringLng = String.valueOf(location.getLongitude());
-//            textViewLat.setText(stringLat);
-//            textViewLng.setText(stringLng);
-//
-//        }
-//
-//        @Override
-//        public void onStatusChanged(String s, int i, Bundle bundle) {
-//            Log.d("Location","status");
-//        }
-//
-//        @Override
-//        public void onProviderEnabled(String s) {
-//            Log.d("Location","Enabled");
-//        }
-//
-//        @Override
-//        public void onProviderDisabled(String s) {
-//            Log.d("Location","Disabled");
-//        }
-//    }
 
 }

@@ -44,6 +44,8 @@ public class NooteDbAdapter {
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_LATITUDE = "latitude";
     public static final String KEY_LONGITUDE = "longitude";
+    public static final String KEY_PHOTO = "photo";
+
 
     private static final String TAG = "NotesDbAdapter";
     private DatabaseHelper mDbHelper;
@@ -57,6 +59,7 @@ public class NooteDbAdapter {
                     + "title text not null, "
                     + "category text not null, "
                     + "body text not null, "
+                    + "photo blob, "
                     + "latitude text, "
                     + "longitude text, "
                     + "date text );";
@@ -128,12 +131,13 @@ public class NooteDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String title, String body, String date, String category, String latitude, String longitude ) {
+    public long createNote(String title, String body, String date, String category, String latitude, String longitude, byte[] photo ) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
         initialValues.put(KEY_DATE, date);
         initialValues.put(KEY_CATEGORY, category);
+        initialValues.put(KEY_PHOTO, photo);
         initialValues.put(KEY_LATITUDE, latitude);
         initialValues.put(KEY_LONGITUDE, longitude);
 
@@ -159,7 +163,7 @@ public class NooteDbAdapter {
     public Cursor fetchAllNotes() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY, KEY_DATE, KEY_CATEGORY, KEY_LATITUDE, KEY_LONGITUDE}, null, null, null, null, null);
+                KEY_BODY, KEY_DATE, KEY_CATEGORY, KEY_PHOTO, KEY_LATITUDE, KEY_LONGITUDE}, null, null, null, null, null);
     }
 
     /**
@@ -174,7 +178,7 @@ public class NooteDbAdapter {
         Cursor mCursor =
 
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                        KEY_TITLE, KEY_BODY, KEY_DATE, KEY_CATEGORY, KEY_LATITUDE, KEY_LONGITUDE}, KEY_ROWID + "=" + rowId, null,
+                        KEY_TITLE, KEY_BODY, KEY_DATE, KEY_CATEGORY, KEY_PHOTO, KEY_LATITUDE, KEY_LONGITUDE}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -193,12 +197,13 @@ public class NooteDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateNote(long rowId, String title, String body, String date, String category, String latitude, String longitude) {
+    public boolean updateNote(long rowId, String title, String body, String date, String category, String latitude, String longitude, byte[] photo) {
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);
         args.put(KEY_BODY, body);
         args.put(KEY_DATE, date);
         args.put(KEY_CATEGORY, category);
+        args.put(KEY_PHOTO, photo);
         args.put(KEY_LATITUDE, latitude);
         args.put(KEY_LONGITUDE, longitude);
 

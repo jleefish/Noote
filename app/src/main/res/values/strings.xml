@@ -14,4 +14,8 @@
     <string name="Latitude">Latitude:</string>
     <string name="Longitude">Longitude:</string>
     <string name="title_activity_maps">Map</string>
+    <string name="location_permission_denied">Requires location permission.</string>
+    <string name="permission_required_toast">Location permission is required</string>
+    <string name="permission_rationale_location">Access to the location service is required</string>
+    <string name="new_photo">click</string>
 </resources>

@@ -25,12 +25,22 @@
             android:id="@+id/category"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
-    <EditText android:id="@+id/body" android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+    <EditText android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:minWidth="30dp"
         android:scrollbars="vertical"/>
+
+    <ImageButton
+        android:id="@+id/photoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:src="@drawable/avatar"
+        android:layout_gravity="center"/>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="fill_parent"
