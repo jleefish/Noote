@@ -9,16 +9,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +24,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationListener;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -62,10 +60,7 @@ public class NooteEdit extends Activity implements
 
     // ===== add photo
     private ImageButton newPhoto;
-//    private ImageView photo;
     private byte[] photoBytes;
-
-
 
 
     public void setActivityBackgroundColor(int color) {
@@ -95,7 +90,6 @@ public class NooteEdit extends Activity implements
         textViewLng = (TextView) findViewById(R.id.longitude);
 
         newPhoto = (ImageButton) findViewById(R.id.photoButton);
-//        photo = (ImageView) findViewById(R.id.photo);
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
         confirmButton.setOnClickListener(this);
@@ -116,87 +110,67 @@ public class NooteEdit extends Activity implements
         populateFields();
         buildGoogleApiClient();
 
-//        newPhoto.setOnClickListener(new ChooseCameraListener());
-        newPhoto.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Intent pickPhoto = new Intent(Intent.ACTION_PICK);
-                pickPhoto.setType("image/*");
-                startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
-
-                return true;
-            }
-        });
-
+        newPhoto.setOnClickListener(new ChooseCameraListener());
+        newPhoto.setOnLongClickListener(new ChooseGalleryListener());
     }
 
-//    @Override
-//    public boolean onLongClick(View view) {
-//        Intent pickPhoto = new Intent(Intent.ACTION_PICK);
-//        pickPhoto.setType("image/*");
-//        startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
-//
-//        return true;
-//    }
 
-//    public class ChooseCameraListener implements View.OnClickListener {
-//
-//        @Override
-//        public void onClick(View v) {
-//
-//            Intent pictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//            startActivityForResult(Intent.createChooser(
-//                    pictureIntent, "Take your photo"), TAKE_AVATAR_CAMERA_REQUEST);
-//        }
-//    }
+    public class ChooseCameraListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+
+            Intent pictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(Intent.createChooser(
+                    pictureIntent, "Take your photo"), TAKE_AVATAR_CAMERA_REQUEST);
+        }
+    }
 
 
-//    private class ChooseGalleryListener implements View.OnLongClickListener {
-//
-//        @Override
-//        public boolean onLongClick(View v)
-//        {
-//            Intent pickPhoto = new Intent(Intent.ACTION_PICK);
-//            pickPhoto.setType("image/*");
-//            startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
-//
-//            return true;
-//        }
-//    }
+    private class ChooseGalleryListener implements View.OnLongClickListener {
+
+        @Override
+        public boolean onLongClick(View v)
+        {
+            Intent pickPhoto = new Intent(Intent.ACTION_PICK);
+            pickPhoto.setType("image/*");
+            startActivityForResult(Intent.createChooser(pickPhoto, "Choose a picture to use as your avatar!"), TAKE_AVATAR_GALLERY_REQUEST);
+
+            return true;
+        }
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        int maxLength = 600;
+
         switch (requestCode) {
+
             case TAKE_AVATAR_CAMERA_REQUEST:
 
-//                if (resultCode == Activity.RESULT_CANCELED)
-//                {
-//// Avatar camera mode was canceled.
-//                }
-//                else if (resultCode == Activity.RESULT_OK)
-//                {
-//// Avatar camera executed ok
-//                    Bitmap cameraPic =(Bitmap) data.getExtras().get("data");
-//                    if (cameraPic != null)
-//                    {
-//                        try
-//                        {
-//// Get URI from bitmap
-//                            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//                            cameraPic.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-//                            String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), cameraPic, "Title", null);
-//
-//// Convert to a byte array we can access in saveState()
-//
-//// set ImageView to cameraPic
-//                            imgPhoto.setImageBitmap(cameraPic);
-//                        }
-//                        catch (Exception e)
-//                        {
-//// error saving the image
-//                        }
-//                    }
-//                }
+                if (resultCode == Activity.RESULT_CANCELED)
+                {
+                    // Avatar camera mode was canceled.
+                }
+                else if (resultCode == Activity.RESULT_OK)
+                {
+                    // Avatar camera executed ok
+                    Bitmap cameraPic =(Bitmap) data.getExtras().get("data");
+                    if (cameraPic != null)
+                    {
+                        try
+                        {
+                            Bitmap scaledPic = scaleBitmapSameAspectRatio(cameraPic, maxLength);
+                            newPhoto.setImageBitmap(scaledPic);
+                            photoBytes = NooteHelper.getImageBytes(scaledPic);
+                        }
+                        catch (Exception e)
+                        {
+                            // error saving the image
+                        }
+                    }
+                }
+
             case TAKE_AVATAR_GALLERY_REQUEST:
                 if (resultCode == Activity.RESULT_CANCELED) {
                     // Avatar gallery request mode was canceled.
@@ -204,24 +178,19 @@ public class NooteEdit extends Activity implements
                     //Get image picked
                     Uri photoUri = data.getData();
 
-
                     if (photoUri != null) {
                         try {
                             newPhoto.setImageURI(photoUri);
                             Bitmap galleryPic = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                            photoBytes = NooteHelper.getImageBytes(galleryPic);
+                            Bitmap scaledPic = scaleBitmapSameAspectRatio(galleryPic, maxLength);
+                            photoBytes = NooteHelper.getImageBytes(scaledPic);
                         } catch (Exception e) {
 
                         }
                     }
                 }
         }
-
-
     }
-
-
-
 
     private synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -341,7 +310,12 @@ public class NooteEdit extends Activity implements
             mBodyText.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_BODY)));
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
-            newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
+
+
+            if (note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO)) != null) {
+                newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
+            }
+
             // Todo : fetch audio from db
             textViewLat.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LATITUDE))));
             textViewLng.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LONGITUDE))));
@@ -428,6 +402,27 @@ public class NooteEdit extends Activity implements
             default:
                 break;
         }
+    }
+
+    private Bitmap scaleBitmapSameAspectRatio(Bitmap galleryPic, int maxLength) {
+        int orgHeight = galleryPic.getHeight();
+        int orgWidth = galleryPic.getWidth();
+
+        int scaledWidth = scaleSide(orgWidth, orgHeight, maxLength);
+        int scaledHeight = scaleSide(orgHeight, orgWidth, maxLength);
+
+        // create the scaled bitmap
+        return Bitmap.createScaledBitmap(galleryPic, scaledWidth, scaledHeight, true);
+    }
+
+    private int scaleSide(int side1, int side2, int max)
+    {
+        if (side1 >= side2)
+        {
+            return max;
+        }
+
+        return (int)((float) max * ((float) side1 / (float) side2));
     }
 
 }

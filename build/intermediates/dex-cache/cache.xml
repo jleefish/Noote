@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_168de68e0966e4cf856fa7803aec02e823eb1eb5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="741f550aea73f64507fc60a799fefd5a2ea2bef5">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-10.0.0_5e504a252adfec374711707f4351bd4e833977ed\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_885906ea72987a0e16d4200ad0656356dec33778\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_aed9683996fd2fac79dddcf390ae2961c77fcf0c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ddfa80ca49f1334afea1f9aa93148be73f73cd0f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-10.0.0_2f416ef7bd300196f3bd4fbc5c0f82bd96118bb7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="444a220fadbdf260b3aa47c6e858c5d1e645170f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-10.0.0_149af5207c9cd6e6702e831decdc8df6bd6d9ee6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4701f9f79c8a00564912b21b0cb0cec3f51a7d23">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-10.0.0_742dd8d6c4548a23f6130a5a095f047729492c79\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ce6e6e59212db0893fc36e5b579cf319a84aade8">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-10.0.0_4f494f3beaf4862fe09cf170972cbaf8a513be69\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_bdfe90294d4e143aa43bd2e8071bfe3adb72c6f7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_51b29924f65bff35d3cb40426f7ca49a54e2a920\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2b410ae1fda134f470276365f4b7f846269e0d23">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-10.0.0_c4b1be8764a8fa072a0a3019a78916d37f0224a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3861e0294c61bf4bf968a1da1607497345dca283">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-10.0.0_6f1465efafad7fd67b13ca67b0ca59bde6e23c2f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2e61c07206f0568b34939e2dc0e2bc75251648dc">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-instantapps-10.0.0_244d9504ba3b7ab9bbafc09fdf7070e85a1e0498\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_9b76fdd6509a67c4f5a479a1054e7fb2cce158ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6666dd525c3da197e7d07f4f23ef5fc7881a697b">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.0_e721166b54c857c6a9a2430b9b428116cccd6a47\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-10.0.0_795e44c21c405eabf641e5fb60393662071ec835\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="80338dde5f9d8e20efe2f2a44bc424aefe4eb8f4">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-10.0.0_db11d40e2228949399ff976360c6af6803edeefa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_66692a62e533a6cde7e60265ac3f02cc49d05ba8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_04a90cf28cf856c1c3ad5bf3be785cbd32c60392\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c7ed3fd9d5a9687980dac6c504abd91ad3dfa238">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-10.0.0_d2ff4e5a9f384556f81795b2de6268e4ba1f5a33\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a383a583c346ce8ea5767d77f4fe58e1d8e5f221">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-10.0.0_d4118e1fcbfc762e6012f053519598f96e5f079b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0d70f7c486d9d65ceabd0039667ae4d53bf0ae7c">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-10.0.0_daa590134b8e0b26d685e4cb7d1abfa51ab17eed\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_cb67bc7b8aec8e02094f4b28ef560da09873d436\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="afe570766c34b4471ed1581a265a4fb94cf8540c">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_189565e5094bd4d7886fac7b94d9d5df6b481a29\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8ca4ffc4d90754f1f2438dfc3e94006cfcc6be98">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-10.0.0_711a14534c7ed5bbceb7ef17ae469194009710ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="75dbc3537bc912d077b3db2f5ac72d5b43644b2c">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-10.0.0_d9713229d3824cca1189d1df2efa703e8db3c893\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fb0229499e600b485a276d4e31161a3ae31c144c">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-10.0.0_891f103f75d269c8e69c99e7b856c93d7fc7cb92\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b1c926efda90fbf653889fea922eacc527de8486">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-10.0.0_05c1c1da64eb7b7e61b915363111f98b3dd07eb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="76863814ca24fea5a0510373d15d3ccddebc09f1">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-10.0.0_c2e8a08eaa9809a85039243dc3ccde2d0f375fa2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="543835521cf4f867223d9f2a4b19ce32f95b0573">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-awareness-10.0.0_7038ce7e45117503b3be1e0da6f720b6f0e4f6f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3a05b3852a6aec21ea0a6ea4d284ee69c04c55c4">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-10.0.0_5327f380c2d2fcf509ed1334922374e4a7d3cefa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b4af293699abd3f72ab1bd12d6c84d4c545bda0f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3347c3e7056fabc88bdbd8fdae65ddf2b674d977">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-10.0.0_cef0bdb586b2e3fc4d03352ce46820f9395673b0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a18773c279bde7e49e09f621aea613685c108c7f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-10.0.0_15949a018d95110da9d9bead52963f0104bf8fd6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c2376d0ec8dbe85d3446cad64905c0395fbe220e">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-10.0.0_ff082a883462a59f7ed39b2bf678fa2bf3eacc66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="41e39c7ee84e63ae18df6c6ccb96d196996add4c">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-10.0.0_c6596cc0284c106dc0d5167dc5f0fcf948201261\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-appindexing\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="22031b047b12904b888549ba36c0c30d83b1aea1">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-appindexing-10.0.0_085660db44f7678408d7f71bbe2298cbe6cadce1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_4035a470d2c5adb977262d3741ab68980a00af8a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b7518f2d3fce2ebec6a0bb8d2cd97eebc9f119df">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-10.0.0_9f8b0e9da5707145e586e7729e1cff705ee01f9c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5ac49e5d5aea8772c8018ce2888145f04c5fe7ca">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-10.0.0_bf2fe771c708df093d4f7fa84a8e1eeda0f12171\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="73a2c740a76aa4ba46168ed8bcdee1966e48a589">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-10.0.0_1b979017f270980dfca4944593ee0692b008525b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_1c4a0f046b542f101a577b7950115cf47af2e42f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-v4-impl\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3660967212b89195e628670db181ed86e3307569">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-v4-impl-10.0.0_f8f86bd369080393d8756fd3e5694b8a9cdc9cdf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_b706158e4f3b0a6372687a7838e948c5e711bd41\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="932350448ea536c5dfbc45697951f31d34e50f1f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-10.0.0_7d58f294bf1622bff4a07a978212130fe811709c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="73fe8ab7f76e41d0cabbc4fa3399557de52efb2d">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-10.0.0_f9dd77c3bf024c482c81757947a6adea386a5dfc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6cc495f5634b8aaae30a37317ba687830da545cf">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-10.0.0_98bebe367e32860e6a9b7d9cdf2545a9fa8dc8fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_68c2254eca5ea2d0a7ddb01d343cd23354185a10\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="849da156edbc1201f5cd6e237524187442a62af3">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-10.0.0_d8d90094fcdc7aee79bbe752fe8bf5697f943499\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="147c3e6b95aa3d1e83705b056777ef865d272969">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-10.0.0_e8cd1a60ca3b263fc9767c94a4d5e769a6b8662c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_7b22bbf4c6e6a2ecc1613419a9018f63280d5272\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ce9e02965d7181472e10d3e15a8aab5027993b23">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_156aa9fcbc3bf49cdb5ff033dcf995c403b6313a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0e2bf5e85132c8bfed05a87b71352918815e0205">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-10.0.0_7c4b5c319315847074a45ced720527c197b43ab4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_afa111b3d3249cd7a9b464f525272c09ec61bf9b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8e2fd2b87dc79fc6c8d70fda1247ac6f4a878a28">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-10.0.0_6ae1769665d1a6426308465936f6bab9620abcf0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_941689328ef344d07717480475d3a0005609c7d5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a61005619e43f203768ff3f224137def6f029e50">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-10.0.0_b7678f72fa2f457f753bafde87f3ed76f8589ab4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_d0b35ea580f89e41268b6aa7c50a23a2a4f0808b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="f36cf060b7f0d881ea6449c254ab8a570a3dcdbe">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-10.0.0_bdbff6e0afa7945b237f639b3bcf8f218033123e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ae809d521d9f7da5337a82edd64eea23a76e788d">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-10.0.0_e7b0d8a28d6da024306b815a2d769a9e57487007\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5fd86107cb2d2fa2d099250066cc664cdcfd476f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-10.0.0_f045855c7f839ade874773cad0d04a0105ba9480\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1fabe27d7a7b7ef3fe077c6499cd0a4f08e1c427">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-10.0.0_e4d04371479d82b30728bd7767abf9c3862a3fe2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="cf60a8cd2f896314e40b2f1a9788e91e228c3671">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-10.0.0_6c77740f780e5fa8e5892e98c22e979344889f73\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="813f70b551ce5206ad15dfe6e2f5b2d86e08a723">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-10.0.0_2cd7342f535320f2c8e003d9a1da17c47fca319b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ca730ac2d72056445bf68998cec6b6b2cf4d179e">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-10.0.0_187e5fd2d6bde78b5bf079cb95d6342bcb365569\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="777627dcaf0eaacd4212220e8f2d0c63def91774">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-10.0.0_a63be8c7399c0756536e9caff2c8a24c7fe88ac2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="58cd8dc3bbf63b37f0e107033257467511130e0f">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-10.0.0_6f4e6c4bc226f2720e7d4da5037f7a5a9c5a87f4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8bb364f67ec2eba2356872b2b4ddfe8aada2d5ac">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-10.0.0_18cb3085fba991ec5a3cc331668a67582d95deea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\10.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6b7e0a45e8139272f3fe2a19d4e7b1122c769550">
+        <dex dex="C:\Users\Lenovo\Desktop\Noote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-10.0.0_518ff253871cb793b80df18e1b8fe01e748463a5\classes.dex" />
+    </item>
+
+</items>
