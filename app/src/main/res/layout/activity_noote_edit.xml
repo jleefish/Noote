@@ -33,7 +33,9 @@
         android:layout_height="90dp"
         android:minWidth="30dp"
         android:scrollbars="vertical"/>
-
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <ImageButton
         android:id="@+id/photoButton"
         android:layout_width="wrap_content"
@@ -41,6 +43,37 @@
         android:maxHeight="100dp"
         android:src="@drawable/avatar"
         android:layout_gravity="center"/>
+
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="startRecording"
+                android:text="@string/start"
+                />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="stopRecording"
+                android:text="@string/stop"/>
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="playRecord"
+                android:text="@string/play"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="fill_parent"

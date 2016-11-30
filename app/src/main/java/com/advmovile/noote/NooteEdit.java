@@ -342,6 +342,7 @@ public class NooteEdit extends Activity implements
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
             newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
+            // Todo : fetch audio from db
             textViewLat.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LATITUDE))));
             textViewLng.setText(String.valueOf(note.getDouble(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_LONGITUDE))));
 //            System.out.println("date"+note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE));

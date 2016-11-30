@@ -45,6 +45,7 @@ public class NooteDbAdapter {
     public static final String KEY_LATITUDE = "latitude";
     public static final String KEY_LONGITUDE = "longitude";
     public static final String KEY_PHOTO = "photo";
+    public static final String KEY_AUDIO = "audio";
 
 
     private static final String TAG = "NotesDbAdapter";
@@ -60,6 +61,7 @@ public class NooteDbAdapter {
                     + "category text not null, "
                     + "body text not null, "
                     + "photo blob, "
+//                    + "audio blob, "
                     + "latitude text, "
                     + "longitude text, "
                     + "date text );";
@@ -131,13 +133,14 @@ public class NooteDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String title, String body, String date, String category, String latitude, String longitude, byte[] photo ) {
+    public long createNote(String title, String body, String date, String category, String latitude, String longitude, byte[] photo) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
         initialValues.put(KEY_DATE, date);
         initialValues.put(KEY_CATEGORY, category);
         initialValues.put(KEY_PHOTO, photo);
+//        initialValues.put(KEY_AUDIO, audio);
         initialValues.put(KEY_LATITUDE, latitude);
         initialValues.put(KEY_LONGITUDE, longitude);
 
@@ -204,6 +207,7 @@ public class NooteDbAdapter {
         args.put(KEY_DATE, date);
         args.put(KEY_CATEGORY, category);
         args.put(KEY_PHOTO, photo);
+//        args.put(KEY_AUDIO, audio);
         args.put(KEY_LATITUDE, latitude);
         args.put(KEY_LONGITUDE, longitude);
 
