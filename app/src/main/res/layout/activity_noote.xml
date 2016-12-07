@@ -8,29 +8,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/insert"
-            android:onClick="insertNote"
+            android:id="@+id/sortByTitleBtn"
+            android:onClick="sortByTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_insert"/>
+            android:text="Sort By Title"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/searchText"
             android:layout_weight="1"
             android:hint="enter keyword..." />
-
         <Button
-            android:id="@+id/find"
-            android:onClick="findNote"
+            android:id="@+id/sortByDateBtn"
+            android:onClick="sortByDateMing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/find"/>
+            android:text="Sort By Date"/>
+
+
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/insert"
+        android:onClick="insertNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_insert"/>
 
     <ListView android:id="@+id/android:list"
         android:layout_width="wrap_content"

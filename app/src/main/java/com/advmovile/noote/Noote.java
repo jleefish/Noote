@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -24,6 +28,10 @@ public class Noote extends ListActivity {
 
     private NooteDbAdapter mDbHelper;
 
+    EditText searchEdit;
+    private String titleSort = "none";
+    private String dateSort = "none";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +40,29 @@ public class Noote extends ListActivity {
         mDbHelper.open();
         fillData();
         registerForContextMenu(getListView()); // floating context menu - onCreateContextMenu
+
+        // setting up the filter adaptor
+        searchEdit = (EditText) findViewById(R.id.searchText);
+        searchEdit.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+
+                // Abstract Method of TextWatcher Interface.
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Abstract Method of TextWatcher Interface.
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                ListView av = (ListView) findViewById(android.R.id.list);
+                SimpleCursorAdapter filterAdapter = (SimpleCursorAdapter) av.getAdapter();
+                filterAdapter.getFilter().filter(s.toString());
+
+
+            }
+        });
     }
 
     private void fillData() {
@@ -48,6 +79,14 @@ public class Noote extends ListActivity {
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter notes = new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, fromT, to);
         setListAdapter(notes);
+
+        notes.setFilterQueryProvider(new FilterQueryProvider() {
+            public Cursor runQuery(CharSequence constraint) {
+                return mDbHelper.filter(constraint, titleSort, dateSort);
+            }
+        });
+
+        stopManagingCursor(notesCursor);
     }
 
 
@@ -55,9 +94,7 @@ public class Noote extends ListActivity {
         createNote();
     }
 
-    public void findNote(View v){
-//        searchNote();
-    }
+
 
 
     // context menu and action configuration - long click on list item
@@ -98,5 +135,53 @@ public class Noote extends ListActivity {
                                     Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         fillData();
+    }
+
+    public void sortByTitle(View view) {
+        switch(titleSort) {
+            case "asc" :
+                titleSort = "des";
+                break;
+            case "des" :
+                titleSort = "none";
+                break;
+            case "none" :
+                titleSort = "asc";
+                break;
+        }
+
+        System.out.println("sort by title");
+
+        // disable sort by Date
+        dateSort = "none";
+
+        ListView av = (ListView) findViewById(android.R.id.list);
+        EditText searchEdit = (EditText) findViewById(R.id.searchText);
+        SimpleCursorAdapter filterAdapter = (SimpleCursorAdapter) av.getAdapter();
+        filterAdapter.getFilter().filter(searchEdit.getText().toString());
+    }
+
+
+    public void sortByDateMing(View view) {
+        switch(dateSort) {
+            case "asc" :
+                dateSort = "des";
+                break;
+            case "des" :
+                dateSort = "none";
+                break;
+            case "none" :
+                dateSort = "asc";
+                break;
+        }
+        System.out.println("sort by date");
+
+        // disable sort by title
+        titleSort = "none";
+
+        ListView av = (ListView) findViewById(android.R.id.list);
+        EditText searchEdit = (EditText) findViewById(R.id.searchText);
+        SimpleCursorAdapter filterAdapter = (SimpleCursorAdapter) av.getAdapter();
+        filterAdapter.getFilter().filter(searchEdit.getText().toString());
     }
 }

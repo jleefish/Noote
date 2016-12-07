@@ -22,6 +22,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
 /**
@@ -51,6 +52,8 @@ public class NooteDbAdapter {
     private static final String TAG = "NotesDbAdapter";
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
+
+    private boolean titleSortAsc = false;
 
     /**
      * Database creation sql statement
@@ -212,5 +215,76 @@ public class NooteDbAdapter {
         args.put(KEY_LONGITUDE, longitude);
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+    public Cursor filter (CharSequence constraint, String titleSort, String dateSort)  {
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(
+                DATABASE_TABLE
+        );
+
+        String asColumnsToReturn[] = {
+                DATABASE_TABLE + "."
+                        + KEY_ROWID + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_TITLE + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_BODY + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_DATE + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_CATEGORY + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_PHOTO + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_LATITUDE + "," +
+                        DATABASE_TABLE + "."
+                        + KEY_LONGITUDE
+        };
+
+        String sortString = null;
+
+        if(titleSort != "none" && dateSort == "none"){
+            switch(titleSort) {
+                case "asc" :
+                    sortString = KEY_TITLE;
+                    break;
+                case "des" :
+                    sortString = KEY_TITLE + " DESC";
+                    break;
+                case "none" :
+                    sortString = null;
+                    break;
+            }
+        }
+
+        if(dateSort != "none" && titleSort == "none") {
+            switch(dateSort) {
+                case "asc" :
+                    sortString = KEY_DATE;
+                    break;
+                case "des" :
+                    sortString = KEY_DATE + " DESC";
+                    break;
+                case "none" :
+                    sortString = null;
+                    break;
+            }
+        }
+
+
+        if (constraint == null  ||  constraint.length () == 0)  {
+            //  Return the full list
+            return queryBuilder.query(mDb, asColumnsToReturn, null, null, null, null, sortString);
+        }  else  {
+            String value = "%"+constraint.toString()+"%";
+
+            String conditions =
+                    KEY_TITLE + " like ?" + " OR "
+                            + KEY_CATEGORY + " like ?" + " OR "
+                            + KEY_BODY + " like ? ";
+
+            return mDb.query(DATABASE_TABLE, asColumnsToReturn, conditions, new String[]{value, value, value}, null, null, sortString);
+        }
     }
 }
