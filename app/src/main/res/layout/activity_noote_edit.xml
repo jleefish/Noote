@@ -52,7 +52,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:onClick="startRecording"
+                android:onClick="startRec"
                 android:text="@string/start"
                 />
 
@@ -61,7 +61,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:onClick="stopRecording"
+                android:onClick="stopRec"
                 android:text="@string/stop"/>
 
             <Button
@@ -69,7 +69,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:onClick="playRecord"
+                android:onClick="playRec"
                 android:text="@string/play"/>
         </LinearLayout>
     </LinearLayout>

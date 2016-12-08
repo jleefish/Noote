@@ -9,8 +9,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +31,12 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static android.content.ContentValues.TAG;
 
@@ -61,6 +68,15 @@ public class NooteEdit extends Activity implements
     // ===== add photo
     private ImageButton newPhoto;
     private byte[] photoBytes;
+
+    // ===== audio
+    private MediaRecorder mMediaRecorder = null;
+    private String outputFile = null;
+    private Button start, stop, play;
+    private byte[] audioBytes;
+    private MediaPlayer mMediaPlayer = null;
+
+    boolean mStartRecording = false;
 
 
     public void setActivityBackgroundColor(int color) {
@@ -97,6 +113,37 @@ public class NooteEdit extends Activity implements
         Button mapButton = (Button) findViewById(R.id.map);
         mapButton.setOnClickListener(this);
 
+
+        // Audio
+        start = (Button)findViewById(R.id.btnStart);
+        stop = (Button)findViewById(R.id.btnStop);
+        play = (Button)findViewById(R.id.btnPlay);
+
+        stop.setEnabled(false);
+        play.setEnabled(false);
+
+
+//        if(mMediaRecorder==null){
+//            mMediaRecorder = new MediaRecorder();
+//            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//            mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//            mMediaRecorder.setOutputFile(outputFile);
+//            mMediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+//
+//            try {
+//                mMediaRecorder.prepare();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+////            mMediaRecorder.start();
+//            mStartRecording = true;
+//
+//        }
+
+
+
+
         // ===============
         mRowId = savedInstanceState != null ? savedInstanceState.getLong(NooteDbAdapter.KEY_ROWID) : null;
         // ===============
@@ -114,6 +161,62 @@ public class NooteEdit extends Activity implements
         newPhoto.setOnLongClickListener(new ChooseGalleryListener());
     }
 
+
+    public void startRec(View view) {
+
+        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/myrec_"+ ThreadLocalRandom.current().nextInt(10000000, 99999999 + 1) + ".3gp";
+        System.out.println(outputFile);
+
+        mMediaRecorder = new MediaRecorder();
+        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mMediaRecorder.setOutputFile(outputFile);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        try{
+            mMediaRecorder.prepare();
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        mMediaRecorder.start();
+        start.setEnabled(false);
+        stop.setEnabled(true);
+        Toast.makeText(this, "Recording started", Toast.LENGTH_SHORT).show();
+    }
+
+    public void stopRec(View view) {
+        mMediaRecorder.stop();
+        mMediaRecorder.release();
+        mMediaRecorder = null;
+        stop.setEnabled(false);
+        play.setEnabled(true);
+        Toast.makeText(this, "Record success", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void playRec(View view) throws IOException {
+        if(outputFile!=null){
+            mMediaPlayer = new MediaPlayer();
+            try {
+                mMediaPlayer.setDataSource(outputFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                mMediaPlayer.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mMediaPlayer.start();
+            Toast.makeText(this, "Playing audio", Toast.LENGTH_SHORT).show();
+        }
+        if(audioBytes!=null){
+//Convert to 3gp and play
+        }
+
+    }
 
     public class ChooseCameraListener implements View.OnClickListener {
 
@@ -310,7 +413,7 @@ public class NooteEdit extends Activity implements
             mBodyText.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_BODY)));
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
-
+            outputFile = note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_AUDIO));
 
             if (note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO)) != null) {
                 newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
@@ -339,6 +442,9 @@ public class NooteEdit extends Activity implements
         if (mGoogleApiClient.isConnected()) {
             stopLocationUpdates();
         }
+        if (mMediaPlayer != null){
+            mMediaPlayer.stop();
+        }
     }
 
     @Override
@@ -362,13 +468,14 @@ public class NooteEdit extends Activity implements
         String lat = stringLat;
         String lng = stringLng;
 
+
         if (mRowId == null) {
-            long id = mDbHelper.createNote(title, body, dt, category, lat, lng, photoBytes);
+            long id = mDbHelper.createNote(title, body, dt, category, lat, lng, photoBytes, outputFile);
             if (id > 0) {
                 mRowId = id;
             }
         } else {
-            mDbHelper.updateNote(mRowId, title, body, dt, category, lat, lng, photoBytes);
+            mDbHelper.updateNote(mRowId, title, body, dt, category, lat, lng, photoBytes, outputFile);
         }
     }
 
@@ -386,11 +493,15 @@ public class NooteEdit extends Activity implements
                 }
                 break;
             case R.id.map:
-                if (textViewLat.getText().toString() == null && textViewLng.getText().toString() == null) {
+                if (textViewLat.getText().toString() == null || textViewLng.getText().toString() == null) {
                     Toast.makeText(getApplicationContext(), "save note first", Toast.LENGTH_LONG).show();
                 } else {
-                    double lat = Double.valueOf(textViewLat.getText().toString());
-                    double lng = Double.valueOf(textViewLng.getText().toString());
+                    double lat = Double.valueOf(
+                            textViewLat.getText().toString() != "" ? textViewLat.getText().toString() : "0.0"
+                    );
+                    double lng = Double.valueOf(
+                            textViewLng.getText().toString() != "" ? textViewLng.getText().toString() : "0.0"
+                    );
 
                     Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                     intent.putExtra("latitude", lat);
