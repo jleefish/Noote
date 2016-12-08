@@ -67,6 +67,7 @@ public class NooteEdit extends Activity implements
 
     // ===== add photo
     private ImageButton newPhoto;
+    private Bitmap scaledPic;
     private byte[] photoBytes;
 
     // ===== audio
@@ -119,8 +120,14 @@ public class NooteEdit extends Activity implements
         stop = (Button)findViewById(R.id.btnStop);
         play = (Button)findViewById(R.id.btnPlay);
 
-        stop.setEnabled(false);
-        play.setEnabled(false);
+//        if (outputFile != null) {
+//            stop.setEnabled(true);
+//            play.setEnabled(true);
+//        } else {
+//            stop.setEnabled(false);
+//            play.setEnabled(false);
+//        }
+
 
 
 //        if(mMediaRecorder==null){
@@ -263,7 +270,7 @@ public class NooteEdit extends Activity implements
                     {
                         try
                         {
-                            Bitmap scaledPic = scaleBitmapSameAspectRatio(cameraPic, maxLength);
+                            scaledPic = scaleBitmapSameAspectRatio(cameraPic, maxLength);
                             newPhoto.setImageBitmap(scaledPic);
                             photoBytes = NooteHelper.getImageBytes(scaledPic);
                         }
@@ -285,7 +292,7 @@ public class NooteEdit extends Activity implements
                         try {
                             newPhoto.setImageURI(photoUri);
                             Bitmap galleryPic = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                            Bitmap scaledPic = scaleBitmapSameAspectRatio(galleryPic, maxLength);
+                            scaledPic = scaleBitmapSameAspectRatio(galleryPic, maxLength);
                             photoBytes = NooteHelper.getImageBytes(scaledPic);
                         } catch (Exception e) {
 
@@ -414,9 +421,18 @@ public class NooteEdit extends Activity implements
             dt.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_DATE)));
             mCategory.setText(note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_CATEGORY)));
             outputFile = note.getString(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_AUDIO));
-
+            if (outputFile != null) {
+                stop.setEnabled(true);
+                play.setEnabled(true);
+            } else {
+                stop.setEnabled(false);
+                play.setEnabled(false);
+            }
+            System.out.println("fetched: "+outputFile);
             if (note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO)) != null) {
                 newPhoto.setImageBitmap(NooteHelper.getImage(note.getBlob(note.getColumnIndexOrThrow(NooteDbAdapter.KEY_PHOTO))));
+            } else {
+                newPhoto.setImageResource(R.drawable.avatar);
             }
 
             // Todo : fetch audio from db
@@ -445,6 +461,14 @@ public class NooteEdit extends Activity implements
         if (mMediaPlayer != null){
             mMediaPlayer.stop();
         }
+//        newPhoto.setImageBitmap(scaledPic);
+        newPhoto.invalidate();
+//        if (scaledPic != null) {
+//
+//            newPhoto.setImageBitmap(scaledPic);
+//        } else {
+//            newPhoto.setImageResource(R.drawable.avatar);
+//        }
     }
 
     @Override
@@ -453,6 +477,13 @@ public class NooteEdit extends Activity implements
         if (mGoogleApiClient.isConnected() && mRequestingLocationUpdates) {
             startLocationUpdates();
         }
+        if (scaledPic != null) {
+            newPhoto.invalidate();
+            newPhoto.setImageBitmap(scaledPic);
+        } else {
+            newPhoto.setImageResource(R.drawable.avatar);
+        }
+
         populateFields();
 
     }
@@ -468,7 +499,7 @@ public class NooteEdit extends Activity implements
         String lat = stringLat;
         String lng = stringLng;
 
-
+        System.out.println("saved: "+outputFile);
         if (mRowId == null) {
             long id = mDbHelper.createNote(title, body, dt, category, lat, lng, photoBytes, outputFile);
             if (id > 0) {
