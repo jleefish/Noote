@@ -13,6 +13,7 @@
         <EditText android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="Title here"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout android:orientation="horizontal"
@@ -24,6 +25,7 @@
         <EditText
             android:id="@+id/category"
             android:layout_width="fill_parent"
+            android:hint="Category here"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -32,6 +34,7 @@
         android:layout_width="fill_parent"
         android:layout_height="90dp"
         android:minWidth="30dp"
+        android:hint="Contents here"
         android:scrollbars="vertical"/>
     <LinearLayout android:orientation="horizontal"
         android:layout_width="fill_parent"

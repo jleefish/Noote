@@ -34,17 +34,31 @@ public class NooteHelper {
         return result;
     }
 
+    /**
+     * Converts a bitmap to a byte array
+     * @param bitmap
+     * @return
+     */
     public static byte[] getImageBytes(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
         return stream.toByteArray();
     }
 
+    /**
+     * Converts a byte array to a bitmap
+     * @param image
+     * @return
+     */
     public static Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
-    public static byte[] getBytes(InputStream inputStream) throws IOException {
+
+    //
+    // Nastasia: Thinking about storing Audio as a BLOB, but not efficient so we changed it to storing the path :)
+    //
+    /*public static byte[] getBytes(InputStream inputStream) throws IOException {
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
         int bufferSize = 1024;
         byte[] buffer = new byte[bufferSize];
@@ -54,6 +68,6 @@ public class NooteHelper {
             byteBuffer.write(buffer, 0, len);
         }
         return byteBuffer.toByteArray();
-    }
+    }*/
 
 }

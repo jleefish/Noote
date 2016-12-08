@@ -74,10 +74,7 @@ public class NooteEdit extends Activity implements
     private MediaRecorder mMediaRecorder = null;
     private String outputFile = null;
     private Button start, stop, play;
-    private byte[] audioBytes;
     private MediaPlayer mMediaPlayer = null;
-
-    boolean mStartRecording = false;
 
 
     public void setActivityBackgroundColor(int color) {
@@ -168,12 +165,12 @@ public class NooteEdit extends Activity implements
         newPhoto.setOnLongClickListener(new ChooseGalleryListener());
     }
 
-
+    // Nastasia: Triggers method when Button view is clicked, gets the path to the recording and appends a random number in order to make it unique
     public void startRec(View view) {
 
         outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/myrec_"+ ThreadLocalRandom.current().nextInt(10000000, 99999999 + 1) + ".3gp";
         System.out.println(outputFile);
-
+        //new instance of the MediaRecorder which interfaces with the hardware streamlines the audio encoding and formatting
         mMediaRecorder = new MediaRecorder();
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -190,23 +187,27 @@ public class NooteEdit extends Activity implements
         mMediaRecorder.start();
         start.setEnabled(false);
         stop.setEnabled(true);
+        //Display an unobtrusive msg to the user to let them know recording has started
         Toast.makeText(this, "Recording started", Toast.LENGTH_SHORT).show();
     }
-
+    //Nastasia: Triggered when the Button view is clicked. Releases the mediarecorder object to free precious resources
     public void stopRec(View view) {
         mMediaRecorder.stop();
         mMediaRecorder.release();
         mMediaRecorder = null;
         stop.setEnabled(false);
         play.setEnabled(true);
+        //Unobtrusive msg to the user letting them know your recording was successful
         Toast.makeText(this, "Record success", Toast.LENGTH_SHORT).show();
 
     }
-
+    //Nastasia: Triggered when the User clicks the Button view called "PLAY"
     public void playRec(View view) throws IOException {
         if(outputFile!=null){
+            //Media player object
             mMediaPlayer = new MediaPlayer();
             try {
+                //Sets the datasource to external storage
                 mMediaPlayer.setDataSource(outputFile);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -217,14 +218,15 @@ public class NooteEdit extends Activity implements
                 e.printStackTrace();
             }
             mMediaPlayer.start();
+            //Player is prepared and started, User is notified with a Toast msg
             Toast.makeText(this, "Playing audio", Toast.LENGTH_SHORT).show();
-        }
-        if(audioBytes!=null){
-//Convert to 3gp and play
         }
 
     }
 
+    /**
+     * Creates option to use camera
+     */
     public class ChooseCameraListener implements View.OnClickListener {
 
         @Override
@@ -236,7 +238,9 @@ public class NooteEdit extends Activity implements
         }
     }
 
-
+    /**
+     * Creates option to choose image from gallery
+     */
     private class ChooseGalleryListener implements View.OnLongClickListener {
 
         @Override
@@ -250,6 +254,14 @@ public class NooteEdit extends Activity implements
         }
     }
 
+    /**
+     * Method to handle user selection between
+     * camera and gallery. Sets imageview with
+     * selection.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         int maxLength = 600;
@@ -412,6 +424,9 @@ public class NooteEdit extends Activity implements
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
     }
 
+    /**
+     * Populate fields in detail view of note
+     */
     private void populateFields() {
         if (mRowId != null) {
             Cursor note = mDbHelper.fetchNote(mRowId);
@@ -453,22 +468,17 @@ public class NooteEdit extends Activity implements
     @Override
     protected void onPause() {
         super.onPause();
-        //noinspection MissingPermission
-//        locationManager.removeUpdates(locationListener);
+
         if (mGoogleApiClient.isConnected()) {
             stopLocationUpdates();
         }
         if (mMediaPlayer != null){
             mMediaPlayer.stop();
         }
-//        newPhoto.setImageBitmap(scaledPic);
+
         newPhoto.invalidate();
-//        if (scaledPic != null) {
-//
-//            newPhoto.setImageBitmap(scaledPic);
-//        } else {
-//            newPhoto.setImageResource(R.drawable.avatar);
-//        }
+        newPhoto.setImageBitmap(scaledPic);
+
     }
 
     @Override
@@ -488,13 +498,14 @@ public class NooteEdit extends Activity implements
 
     }
 
+    /**
+     * Method to save current state of a note
+     */
     private void saveState() {
         String title = mTitleText.getText().toString();
         String body = mBodyText.getText().toString();
         String dt = NooteHelper.formatDT();
         String category = mCategory.getText().toString();
-//        String textViewLat = this.textViewLat.getText().toString();
-//        String textViewLng = this.textViewLng.getText().toString();
 
         String lat = stringLat;
         String lng = stringLng;
@@ -546,6 +557,12 @@ public class NooteEdit extends Activity implements
         }
     }
 
+    /**
+     * Method to scale image
+     * @param galleryPic
+     * @param maxLength
+     * @return
+     */
     private Bitmap scaleBitmapSameAspectRatio(Bitmap galleryPic, int maxLength) {
         int orgHeight = galleryPic.getHeight();
         int orgWidth = galleryPic.getWidth();
